@@ -3,7 +3,6 @@ body{
   height: 100%;
 }
 
-
 .thanks__content {
   display       : inline-block;        
   position      : relative;             
@@ -27,7 +26,6 @@ body{
   font-family: 'Inika';
   font-weight: normal;
 }
-
 
 .thanks__content--inner{
   width         : 100%;

@@ -24,11 +24,11 @@ class AuthorRequest extends FormRequest
     public function rules()
     {
 
-        return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'max:255'],
-            ];
+      return [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255'],
+        'password' => ['required', 'string', 'max:255'],
+      ];
      
     }
 

@@ -6,26 +6,16 @@
 
 @section('content')
   <div class="thanks__content">
-
     <div class="backStr"><span>Thank you</span></div>
-
-
     <div class="thanks__content--inner">
-      
-
-
       <div class="thanks__heading">
         <h2>お問い合わせありがとうございました</h2>
       </div>
-
       <div class="form__button">
         <button class="form__button-submit">
           <a href="/">HOME</a>
         </button>
       </div>
     </div>
-
-
   </div>
-
 @endsection

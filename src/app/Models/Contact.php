@@ -24,8 +24,8 @@ class Contact extends Model
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'created_at'        => 'datetime:Y-m-d H:i:s',    // ←日付の形式を指定
-        'updated_at'        => 'datetime:Y-m-d H:i:s',    // ←日付の形式を指定
+        'created_at'        => 'datetime:Y-m-d H:i:s',    
+        'updated_at'        => 'datetime:Y-m-d H:i:s',    
     ];
 
     public function category(){    
