@@ -40,6 +40,7 @@ class ContactRequest extends FormRequest
 
     public function messages(){
         return [
+            
             'first_name.required' => '名を入力してください',
             'first_name.string' => '名前を文字列で入力してください',
             'first_name.max' => '名前を255文字以下で入力してください',
