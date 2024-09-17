@@ -1,0 +1,320 @@
+.form__content {
+    margin: 0 auto;
+    padding: 0px 15px;
+    max-width: 1230px;
+}
+
+.form__heading {
+    padding:20px;
+    text-align: center;
+}
+
+.category__alert--success{
+    padding: 10px ;
+    background:#d1e7dd ;
+    border-color: #bcd5c9;
+    color: #0f5132
+}
+.category__alert--danger{
+    padding: 10px 0;
+    border-color: #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+}
+.category__alert--danger ul{
+    margin:0;
+}
+
+
+
+
+/* =================================== */
+/* list-section */
+/* =================================== */
+
+.list-section{
+    margin: 0 auto ;
+    padding: 0 1%;
+    max-width: 1230px;
+}
+
+
+.contact-table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.contact-table__header{
+    font-size: 16px;
+    padding: 10px 5px;
+    background: #8B7969;
+    color:#fff;
+}
+.contact-table__header--gender{
+    width: 80px;
+}
+.contact-table__header--detail{
+    width: 120px;
+}
+
+.contact-table__row{
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    
+}
+.contact-table__row td{
+    padding: 10px 5px;
+}
+.contact-table__button-detail{
+    width: 80px;
+    background: #F4F4F4;
+    color: #777;
+    font-size: 14px;
+    border-width: 0;
+    font-weight: bold;
+}
+.contact-table__button-detail:hover{
+    background: #c7c0ba;
+}
+
+/* =================================== */
+/* search-section */
+/* =================================== */
+
+.search-section{
+    width: 100%;
+    margin-bottom: 20px;
+    padding:0 1%;
+}
+
+.search-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0;
+    width: 100%;
+    padding:0;
+}
+
+.search-form__item{
+    height: 40px;
+    background:#FBFBFB;
+    border: solid 1px #E3DED9;
+    color:#8B7969;
+    margin:0 5px;
+    padding:2px 5px;
+}
+
+.search-form__item--keyword{
+   flex-grow: 2;
+   margin-left: 0;
+}
+.search-form__item--gender{
+    flex-grow: 1;
+}
+.search-form__item--category{
+    flex-grow: 2;
+}
+.search-form__item--date{
+    flex-grow: 2;
+}
+
+.search-form__button{
+    width: 80px;
+    background: #82756A;
+    color: #fff;
+    height: 40px;
+    font-size: 12px;
+    border:none;
+    font-weight: bold;
+    margin:0 5px;
+}
+.search-form__item--reset{
+    margin-right:0;
+    background: #D9C6B5;
+}
+.search-form__button:hover{
+    background: #c7c0ba;
+}
+
+
+/* =================================== */
+/* optional-section */
+/* =================================== */
+
+.optional-section{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 60px;
+    padding:0 1%;
+    align-items: center;
+
+}
+
+.optional-section__export{
+    width: 200px;
+}
+.export__button-submit{
+    width: 160px;
+    background: #E1DBD6;
+    color: #8B7969;
+    height: 40px;
+    font-size: 12px;
+    border:none;
+    font-weight: bold;
+}
+.export__button-submit:hover{
+    background: #c7c0ba;
+}
+
+.optional-section__pagination {
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;   
+}
+.pagination li {
+  display: inline;
+  margin-left: 4px;
+}
+.pagination li a, .pagination li span {
+    color: #2f3859;
+    padding: 8px 8px;
+    text-decoration: none;   
+}
+.pagination li a.active {
+    background-color: #82756A;
+    color: white;
+}
+ul.pagination li a:hover:not(.active) {
+    background-color: #e1e7f0;
+}
+
+
+/* =================================== */
+/* utilities */
+/* =================================== */
+
+.utility-button{
+    width: 100px;
+    height: 32px;
+    background: #F0F0F0;
+    color:#888;
+    border: solid 1px #D9C6B5;
+  }
+
+
+
+/* =================================== */
+/* 詳細画面（モーダルウィンドウ） */
+/* =================================== */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.2);
+    
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    min-width: 320px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 0.3s;
+    border: solid 2px #8B7969;
+}
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+.modal-header h1 {
+    margin: 1rem 0;
+}
+
+.modal-header {
+
+    padding: 3px 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-close{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: #e9e9e9;
+    position: relative;
+    border-radius:100%;
+}
+.modal-close::before, .modal-close::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: #666;
+    transform: rotate(45deg);
+    transform-origin:0% 50%;
+    position: absolute;
+    top: calc(14% - 2.5px);
+    left: 14%;
+}
+
+.modal-close::after{
+    transform: rotate(-45deg);
+    transform-origin:100% 50%;
+    left: auto;
+    right: 14%;
+}
+    
+.modal-close:hover{
+    background: #ccc;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 10px 1%;
+    color: #8B7969;
+}
+
+#modal-table th{
+    width: 180px;
+    padding: 5px 5px 5px 0;
+}
+
+.modal-delete{
+    width: 100%;
+    height: 100px;
+    display:flex;
+    justify-content: center;
+
+
+    align-items: center;
+}
+.modal-delete button{
+    width: 80px;
+    height: 30px;
+    background:#BA370D;
+    color:#fff;
+    font-weight: bold;
+    border: none;
+}
+.modal-delete button:hover{
+    background: #e5af9d;
+    color: #000;
+    cursor: pointer;
+}
