@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-// use Egulias\EmailValidator\Validation\RFCValidation;
-// use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
-
-
 class AuthorRequest extends FormRequest
 {
     /**
@@ -29,10 +25,6 @@ class AuthorRequest extends FormRequest
     {
 
       return [
-        // 'name' => ['required', 'string', 'max:255'],
-        // 'email' => ['required', 'string', 'email', 'max:255'],
-        // 'password' => ['required', 'string', 'max:255'],
-
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email:strict', 'max:255', 'unique:users'],
         'password' => ['required', 'string']

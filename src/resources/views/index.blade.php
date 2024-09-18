@@ -25,8 +25,6 @@
             <div class="form__input--text">
               <input type="text" name="last_name" placeholder="例）山田" value="{{ old('last_name') }}"/>
               <input type="text" name="first_name" placeholder="例）太郎" value="{{ old('first_name') }}"/>
-              <!-- <input type="text" name="last_name" placeholder="例）山田" value="山田"/> -->
-              <!-- <input type="text" name="first_name" placeholder="例）太郎" value="太郎"/> -->
             </div>
             <div class="form__error">
               @error('last_name')
@@ -79,7 +77,6 @@
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="email" name="email" placeholder="例）test@example.com" value="{{ old('email') }}"/>
-              <!-- <input type="email" name="email" placeholder="例）test@example.com" value="test@example.com"/> -->
             </div>
             <div class="form__error">
               @error('email')
@@ -103,10 +100,6 @@
               <input type="tel" name="tel" placeholder="080" value="{{ old('tel') }}"/>
               <input type="tel" name="tel_middle" placeholder="1234" value="{{ old('tel_middle') }}"/>
               <input type="tel" name="tel_bottom" placeholder="5678" value="{{ old('tel_bottom') }}"/>
-             
-              <!-- <input type="tel" name="tel" placeholder="080" value="080"/> -->
-              <!-- <input type="tel" name="tel_middle" placeholder="1234" value="1234"/> -->
-              <!-- <input type="tel" name="tel_bottom" placeholder="5678" value="5678"/> -->
             </div>
             <div class="form__error">
               @error('tel')
@@ -134,7 +127,6 @@
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="text" name="address" placeholder="例）東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}"/>
-              <!-- <input type="text" name="address" placeholder="例）東京都渋谷区千駄ヶ谷1-2-3" value="東京都渋谷区千駄ヶ谷1-2-3"/> -->
             </div>
             <div class="form__error">
               @error('address')
@@ -204,7 +196,6 @@
           <div class="form__group-content">
             <div class="form__input--text">
               <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{old('detail')}}</textarea>
-              <!-- <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">送ってください</textarea> -->
             </div>
             <div class="form__error">
                 @error('detail')

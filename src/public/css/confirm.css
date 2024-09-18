@@ -33,11 +33,9 @@
   color: #fff;
 }
 
-
 .confirm-table__text {
   padding: 15px;
-  border-bottom: 1px solid #ddd;
-  
+  border-bottom: 1px solid #ddd;  
 }
 
 .confirm-table__text input, .confirm-table__text span {
@@ -52,7 +50,6 @@
 .confirm-table__row:last-child .confirm-table__text {
   border-bottom-width: 0;
 }
-
 
 .form__button {
   display:flex;

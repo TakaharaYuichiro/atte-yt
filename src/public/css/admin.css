@@ -68,7 +68,7 @@
 .contact-table__button-detail{
     width: 80px;
     background: #F4F4F4;
-    color: #777;
+    color: #a29283;
     font-size: 14px;
     border-width: 0;
     font-weight: bold;
@@ -295,11 +295,12 @@ ul.pagination li a:hover:not(.active) {
     width: 100%;
 }
 #modal-table tr{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;   
 }
 #modal-table th{
     min-width: 180px;
     padding: 5px 0;
+    font-weight: bold;
 }
 #modal-table td{
     width: 100%;

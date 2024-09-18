@@ -10,7 +10,6 @@
     <h2>Confirm</h2>
   </div>
 
-
   <form class="form" action="/confirm/store" method="post">
     @csrf
 
@@ -93,10 +92,7 @@
     <div class="form__button">
       <button class="form__button-submit" type="submit" name="submin">送信</button>
       <button class="form__button-submit form__button-cancel" type="submit" name="cancel">修正</button>
-     
     </div>
   </form>
-
-
 </div>
 @endsection

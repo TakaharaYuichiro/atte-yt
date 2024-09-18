@@ -2,7 +2,7 @@ body{
   color:#8B7969;
 }
 
-h1, h2{
+h1, h2, p, span, th, td, input{
   /* font-family: "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif; */
   font-family: 'Inika';
   font-weight: normal;
@@ -17,7 +17,6 @@ h2{
 .header {
   background: #fff;
   border-bottom:solid 1px #E0DFDE;
-
 }
   
 .header__inner {
@@ -38,7 +37,6 @@ h2{
 .header-logo a{
   color:#8B7969;
   text-decoration: none;
-  
 }
 
 .header-utilities{
