@@ -47,14 +47,16 @@ class Contact extends Model
         if (!empty($keyword_expression)) {
             $expression_s = mb_convert_kana($keyword_expression, 's'); // 全角スペースを半角スペースに変換
             $keywords = explode(' ', $expression_s);
-
-            $count = count($keywords);
-   
+            
             foreach($keywords as $keyword){
-                $query->orWhere('last_name', 'like', '%' . $keyword . '%')
-                  ->orWhere('first_name', 'like', '%' . $keyword . '%')
-                  ->orWhere('email', 'like', '%' . $keyword . '%');;
+                $query->where(function ($query) use($keyword) {
+                    $query->Where('last_name', 'like', '%' . $keyword . '%')
+                        ->orWhere('first_name', 'like', '%' . $keyword . '%')
+                        ->orWhere('email', 'like', '%' . $keyword . '%');
+                });   
             }
+
+            
         }
     }
 

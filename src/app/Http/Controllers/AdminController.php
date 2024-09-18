@@ -45,7 +45,7 @@ class AdminController extends Controller
         {
             // 検索実行
             $contacts = Contact::with('category')
-                        ->KeywordSearch($request->keyword)  // orWhereを使っているので最初に持ってくる
+                        ->KeywordSearch($request->keyword)  
                         ->CategorySearch($request->category_id)
                         ->GenderSearch($request->gender)
                         ->DateSearch($request->date)

@@ -101,8 +101,8 @@
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="tel" name="tel" placeholder="080" value="{{ old('tel') }}"/>
-              <input type="tel" name="tel_middle" placeholder="1234" value="{{ old('tel-middle') }}"/>
-              <input type="tel" name="tel_bottom" placeholder="5678" value="{{ old('tel-bottom') }}"/>
+              <input type="tel" name="tel_middle" placeholder="1234" value="{{ old('tel_middle') }}"/>
+              <input type="tel" name="tel_bottom" placeholder="5678" value="{{ old('tel_bottom') }}"/>
              
               <!-- <input type="tel" name="tel" placeholder="080" value="080"/> -->
               <!-- <input type="tel" name="tel_middle" placeholder="1234" value="1234"/> -->

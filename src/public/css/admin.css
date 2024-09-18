@@ -205,8 +205,10 @@ ul.pagination li a:hover:not(.active) {
     background: #F0F0F0;
     color:#888;
     border: solid 1px #D9C6B5;
-  }
-
+}
+.utility-button:hover{
+    background: #c7c0ba;
+}
 
 
 /* =================================== */
@@ -222,18 +224,23 @@ ul.pagination li a:hover:not(.active) {
     width: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.2);
-    
 }
 
 .modal-content {
     background-color: #f4f4f4;
-    margin: 20% auto;
-    width: 50%;
-    min-width: 320px;
+    margin: 10% auto 0 auto;
+    width: 750px;
+    min-width: 475px;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     animation-name: modalopen;
     animation-duration: 0.3s;
     border: solid 2px #8B7969;
+}
+
+@media (max-width: 768px) {
+    .modal-content{
+        width: 90%;
+    }
 }
 
 @keyframes modalopen {
@@ -241,15 +248,13 @@ ul.pagination li a:hover:not(.active) {
     to {opacity: 1}
 }
 
-.modal-header h1 {
-    margin: 1rem 0;
-}
-
 .modal-header {
-
     padding: 3px 15px;
     display: flex;
     justify-content: flex-end;
+}
+.modal-header h1 {
+    margin: 1rem 0;
 }
 
 .modal-close{
@@ -260,24 +265,18 @@ ul.pagination li a:hover:not(.active) {
     position: relative;
     border-radius:100%;
 }
-.modal-close::before, .modal-close::after{
+.modal-close::before, .modal-close::after {
     content: "";
-    display: block;
-    width: 100%;
-    height: 5px;
-    background: #666;
-    transform: rotate(45deg);
-    transform-origin:0% 50%;
     position: absolute;
-    top: calc(14% - 2.5px);
-    left: 14%;
+    top: 50%;
+    left: 50%;
+    width: 3px; 
+    height: 22px; 
+    background: #666; 
+    transform: translate(-50%,-50%) rotate(45deg);
 }
-
-.modal-close::after{
-    transform: rotate(-45deg);
-    transform-origin:100% 50%;
-    left: auto;
-    right: 14%;
+.modal-close::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
 }
     
 .modal-close:hover{
@@ -291,9 +290,20 @@ ul.pagination li a:hover:not(.active) {
     color: #8B7969;
 }
 
+#modal-table{
+    table-layout: fixed;
+    width: 100%;
+}
+#modal-table tr{
+    border-bottom: 1px solid #ccc;
+}
 #modal-table th{
-    width: 180px;
-    padding: 5px 5px 5px 0;
+    min-width: 180px;
+    padding: 5px 0;
+}
+#modal-table td{
+    width: 100%;
+    padding: 5px;
 }
 
 .modal-delete{

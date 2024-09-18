@@ -156,26 +156,25 @@
 
 
 <script>
+    // 詳細画面のデータ表示用のjavascriptです
     const buttonOpen = document.getElementsByClassName('contact-table__button-detail');
     const modal = document.getElementById('modal-window');
     const modalDeleteInput = document.getElementById('modal-delete__input');
     const buttonClose = document.getElementsByClassName('modal-close')[0];
 
-
-    // ボタンがクリックされた時
     for(var button of buttonOpen){
         const id = button.value;
+        // 全ての詳細ボタンにリスナーを設定
         button.addEventListener('click', () => {
-            modalDeleteInput.value=id;
+            modalDeleteInput.value = id;
             modal.style.display = 'block';
 
             const contacts = @json($contacts);
             const target = contacts['data'].find(x => x.id == id);
             
             const name = target['last_name'] + " " + target['first_name'];
-            const gender_index = target['gender'];
             var gender = "";
-            switch (gender_index){
+            switch (target['gender']){
                 case 1:
                     gender = "男性";
                     break;
@@ -186,29 +185,27 @@
                     gender = "その他";
                     break;
             }
+
             const email = target['email'];
-            const tel = target['tel'] + target['tel_middle'] +target['tel_bottom'] ; 
+            const tel = target['tel'] + target['tel_middle'] + target['tel_bottom'] ; 
             const address = target['address'];
-            const building = target['building'];
+            const building = target['building'] == null? "": target['building'];
             const category_id = target['category_id'];
             const category = target['category']['content'];
             const detail = target['detail'];
 
-            var tb="<table>";
-            tb+=`<tr><th>お名前</th><td>${name}</td></tr>`;
-            tb+=`<tr><th>性別</th><td>${gender}</td></tr>`;
-            tb+=`<tr><th>メールアドレス</th><td>${email}</td></tr>`;
-            tb+=`<tr><th>電話番号</th><td>${tel}</td></tr>`;
-            tb+=`<tr><th>住所</th><td>${address}</td></tr>`;
-            tb+=`<tr><th>建物名</th><td>${building}</td></tr>`;
-            tb+=`<tr><th>お問い合わせの種類</th><td>${category}</td></tr>`;
-            tb+=`<tr><th>お問い合わせ内容</th><td>${detail}</td></tr>`;
-            tb+="</table>";
+            var tb = "<table>";
+            tb += `<tr><th>お名前</th><td>${name}</td></tr>`;
+            tb += `<tr><th>性別</th><td>${gender}</td></tr>`;
+            tb += `<tr><th>メールアドレス</th><td>${email}</td></tr>`;
+            tb += `<tr><th>電話番号</th><td>${tel}</td></tr>`;
+            tb += `<tr><th>住所</th><td>${address}</td></tr>`;
+            tb += `<tr><th>建物名</th><td>${building}</td></tr>`;
+            tb += `<tr><th>お問い合わせの種類</th><td>${category}</td></tr>`;
+            tb += `<tr><th>お問い合わせ内容</th><td>${detail}</td></tr>`;
+            tb += "</table>";
 
-            const modalTable=document.getElementById('modal-table');
-            modalTable.innerHTML=tb;
-
-
+            document.getElementById('modal-table').innerHTML = tb;
         });
     }
 
@@ -217,16 +214,12 @@
         modal.style.display = 'none';
     });
 
-
     // モーダルコンテンツ以外がクリックされた時
     addEventListener('click', (e)=>{
         if (e.target == modal) {
             modal.style.display = 'none';
         }
     });
-
-
 </script>
-
 
 @endsection
