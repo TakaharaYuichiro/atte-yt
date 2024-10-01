@@ -1,6 +1,8 @@
-body{
-  background: #ede7e0;
+.header-utilities{
+  display: none;
+  background-color: red;
 }
+
 
 .login-form__content {
   margin: 0 auto;
@@ -8,7 +10,7 @@ body{
   max-width: 1230px;
 }
 
-.login-form__heading {
+.form__heading {
   padding:20px;
   text-align: center;
 }
@@ -18,7 +20,6 @@ body{
   width: 470px;
   text-align: center;
   padding: 30px;
-  background: #fff;
 }
 
 .form__group {
@@ -40,11 +41,11 @@ body{
   padding: 10px;
   width: 100%;
   height: 40px;
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
   border-radius: 3px;
 
   appearance: none;
-  background: #F4F4F4;
+  background: #F2F2F2;
 }
 
 .form__button {
@@ -53,13 +54,13 @@ body{
 
 .form__button-submit {
   padding: 10px;
-  width: 120px;
-  height: 46px;
+  width: 100%;
+  height: 40px;
   border: none;
-  background: #82756A;
+  background: #214BE0;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .register__link {
@@ -69,7 +70,7 @@ body{
 
 
 /* =================================== */
-/* utilities */
+/* utilities (layouts/utility.blade.phpに記載の要素に適用)*/
 /* =================================== */
 
 .utility-button{
@@ -81,4 +82,12 @@ body{
 }
 .utility-button:hover{
   background: #c7c0ba;
+}
+
+.login-register-switching{
+  text-align: center;
+}
+.login-register-switching a{
+  color: #214BE0;
+  text-decoration: none;
 }

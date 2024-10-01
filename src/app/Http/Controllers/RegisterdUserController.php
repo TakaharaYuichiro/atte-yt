@@ -1,6 +1,6 @@
 <?php
 
-// 以下のファイルをコピーして、RequestをAuthorRequestにしただけ
+// 以下のファイルをコピーして、RequestをRegisterRequestにしただけ
 // vendor/laravel/fortify/src/Http/Controllers/RegisterdUserController.php
 
 // 以下の記事を参考
@@ -10,7 +10,6 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
-
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
@@ -21,7 +20,7 @@ use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterViewResponse;
 use Laravel\Fortify\Fortify;
 
-use App\Http\Requests\AuthorRequest;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterdUserController extends Controller
 {
@@ -61,7 +60,7 @@ class RegisterdUserController extends Controller
      * @param  \Laravel\Fortify\Contracts\CreatesNewUsers  $creator
      * @return \Laravel\Fortify\Contracts\RegisterResponse
      */
-    public function store(AuthorRequest $request,
+    public function store(RegisterRequest $request,
                           CreatesNewUsers $creator): RegisterResponse
     {
         if (config('fortify.lowercase_usernames')) {

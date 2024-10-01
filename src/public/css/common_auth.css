@@ -1,4 +1,4 @@
-.register-form__content {
+.login-form__content {
   margin: 0 auto;
   padding: 30px 15px;
   max-width: 1230px;
@@ -57,10 +57,11 @@
   font-size: 14px;
 }
 
-.login__link {
+.register__link {
   margin-top: 20px;
   text-align: center;
 }
+
 
 /* =================================== */
 /* utilities */

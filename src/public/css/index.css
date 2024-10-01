@@ -1,3 +1,121 @@
+
+/* =================================== */
+/* ステータス表示領域（上部） */
+/* =================================== */
+.current-status__container{
+  display: grid;
+  grid-template-rows: 100px;
+  grid-template-columns: 200px 1fr 100px;
+}
+
+.current-status{
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  padding:5px;
+}
+.current-status__time{
+  width: 100%;
+}
+.current-status__time--today{
+  font-size: 16px;
+  margin: 0 0 0 auto;
+}
+.current-status__time--realtime{
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;    
+}
+#realtime{
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.current-status__profile{
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;   
+}
+.current-status__profile span{
+  font-size: 18px;   
+}
+#user-name{
+  font-size: 28px;   
+}
+
+
+/* =================================== */
+/* ステータス表示領域（下部） */
+/* =================================== */
+.record-status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record-status th{
+  width: 200px;
+  font-weight: bold;
+  padding:15px;
+}
+.record-status td{
+  width: 200px;
+  text-align: center;
+}
+.record-status tr{
+  border-bottom:1px solid #ccc;
+  
+}
+
+/* =================================== */
+/* 打刻用の4つのボタン */
+/* =================================== */
+
+.atte-selecter{
+  display: grid;
+  grid-template-rows: 150px 90px;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 10%;
+}
+.atte-selecter__button{
+  width: 100%;
+  height: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center; 
+
+}
+.atte-selecter__button button{
+
+  width: 100%;
+  margin:5px;
+  height: 90%;
+  background: #fff;
+  color:#666;
+  border: none;
+  font-size:32px;
+}
+.atte-selecter__button button:hover{
+  background: #f6d0aa;
+}
+.atte-selecter__button button:disabled{
+  background: #fff;
+  color:#ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .contact-form__content {
   margin: 0 auto;
   padding: 15px 15px 60px 15px;

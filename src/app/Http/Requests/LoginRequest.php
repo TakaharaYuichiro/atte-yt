@@ -31,7 +31,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            Fortify::username() => 'required|string|email:strict|max:255',
+            Fortify::username() => 'required|string|email:strict|max:191',
             'password' => 'required|string',
         ];
     }

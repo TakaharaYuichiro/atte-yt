@@ -4,214 +4,155 @@
   <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 @endsection
 
+@section('utilities')
+  @include('layouts.utility')
+@endsection
+
 @section('content')
 <div class="contact-form__content">
   <div class="contact-form__heading">
-    <h2>Contact</h2>
+    <h2></h2>
   </div>
 
-  <form class="form" action="/confirm" method="post">
-    @csrf
-    <table class="contact-table">
+  <!-- ステータス表示領域（上部） -->
+  <div class="current-status__container">
+    <div class="current-status">
+      <div class="current-status__time">
+        <div class="current-status__time--today"><span id="today"></span></div>
+        <div class="current-status__time--realtime"><span id="realtime"></span></div>
+      </div>
+    </div>
+    <div class="current-status">
+      <div class="current-status__profile">
+        <span id="user-name">{{$profile['name']}}</span>
+        <span>{{'さん お疲れ様です！'}}</span>
+      </div>
+    </div>
+    <div class="current-status">
+      <div class="current-status">
+        <span>
+          @switch($data['workState'])
+            @case(1)
+              @if($data['isRest'])
+                休憩中
+              @else
+                勤務中
+              @endif
+              @break;
+            @case(2)
+              勤務終了
+              @break;
+            @default
+              勤務開始前
+              @break
+          @endswitch
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 打刻用の4つのボタンの領域 -->
+  <div class="atte-selecter">
+    <form class="atte-selecter__form" action="/store" method="post">
+      @csrf
+      <input type="hidden" name="user_id" value="{{$profile->id}}"/>
+      <input type="hidden" name="content_index" value="1"/>
+      <div class="atte-selecter__button">
+        <button {{ $data['workState']>0 ? 'disabled': '' }} >勤務開始</button>
+      </div>
+    </form>
+
+    <form class="atte-selecter__form" action="/store" method="post">
+      @csrf
+      <input type="hidden" name="user_id" value="{{$profile->id}}"/>
+      <input type="hidden" name="content_index" value="2"/>
+      <input type="hidden" name="is_rest" value="{{$data['isRest']}}"/>
+      <div class="atte-selecter__button">
+        <button {{ $data['workState']!=1 ? 'disabled': '' }} >勤務終了</button>
+      </div>
+    </form>
+
+    <form class="atte-selecter__form" action="/store" method="post">
+      @csrf
+      <input type="hidden" name="user_id" value="{{$profile->id}}"/>
+      <input type="hidden" name="content_index" value="3"/>
+      <div class="atte-selecter__button">
+        <button {{ ($data['isRest'] || $data['workState']!=1)? 'disabled': ''}}>休憩開始</button>
+      </div>
+    </form>
+
+    <form class="atte-selecter__form" action="/store" method="post">
+      @csrf
+      <input type="hidden" name="user_id" value="{{$profile->id}}"/>
+      <input type="hidden" name="content_index" value="3"/>
+      <div class="atte-selecter__button">
+        <button {{ (!$data['isRest'] || $data['workState']!=1)? 'disabled': '' }}>休憩終了</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ステータス表示領域（下部） -->
+  <div class="record-status">
+    <table>
       <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">お名前</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="last_name" placeholder="例）山田" value="{{ old('last_name') }}"/>
-              <input type="text" name="first_name" placeholder="例）太郎" value="{{ old('first_name') }}"/>
-            </div>
-            <div class="form__error">
-              @error('last_name')
-                {{ $message }}
-              @enderror
-              @error('first_name')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
+        <th>本日の出社時刻</th>
+        <td>{{$data['startTime']}}</td>
       </tr>
-
       <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">性別</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--radio">
-              <input type="radio" name="gender" id="male" value="1" {{ old('gender','1') == '1' ? 'checked' : '' }}/>
-              <label for="male">男性</label>
-
-              <input type="radio" name="gender" id="female" value="2" {{ old('gender') == '2' ? 'checked' : '' }}/>
-              <label for="female">女性</label>
-
-              <input type="radio" name="gender" id="other" value="3" {{ old('gender') == '3' ? 'checked' : '' }}/>
-              <label for="other">その他</label>
-            </div>
-            <div class="form__error">
-              @error('gender')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">メールアドレス</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="email" name="email" placeholder="例）test@example.com" value="{{ old('email') }}"/>
-            </div>
-            <div class="form__error">
-              @error('email')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">電話番号</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="tel" name="tel" placeholder="080" value="{{ old('tel') }}"/>
-              <input type="tel" name="tel_middle" placeholder="1234" value="{{ old('tel_middle') }}"/>
-              <input type="tel" name="tel_bottom" placeholder="5678" value="{{ old('tel_bottom') }}"/>
-            </div>
-            <div class="form__error">
-              @error('tel')
-                {{ $message }}
-              @enderror
-              @error('tel_middle')
-                {{ $message }}
-              @enderror
-              @error('tel_bottom')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">住所</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="address" placeholder="例）東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}"/>
-            </div>
-            <div class="form__error">
-              @error('address')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">建物名</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="building" placeholder="例）建物名" value="{{ old('building') }}"/>
-            </div>
-            <div class="form__error">
-              @error('building')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">お問い合わせの種類</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <select class="search-form__item-select" name="category_id" >
-                  <option value="" {{ old('category_id','') == '' ? 'selected' : '' }}>--選択してください--</option>
-                  @foreach($categories as $category)
-                      <option value="{{$category['id']}}" {{ old('category_id') == $category['id'] ? 'selected' : '' }}>
-                        {{$category['content']}}
-                      </option>
-                  @endforeach
-              </select>
-            </div>
-            <div class="form__error">
-              @error('category_id')
-                {{ $message }}
-              @enderror
-            </div>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <div class="form__group-title">
-            <span class="form__label--item">お問い合わせ内容</span>
-            <span class="form__label--required">※</span>
-          </div>
-        </th>
-        <td>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{old('detail')}}</textarea>
-            </div>
-            <div class="form__error">
-                @error('detail')
-                  {{ $message }}
-                @enderror
-              </div>
-          </div>
-        </td>
+        <th>これまでの休憩時間</th>
+        <td>{{$data['restTimeTotal']}}</td>
       </tr>
     </table>
-
-    <div class="form__button">
-      <button class="form__button-submit" type="submit">確認画面</button>
-    </div>
-
-  </form>
+  </div>
 </div>
+
+
+<script>
+  var lastDateTime = new Date();
+  // const testHour = 20;  // リロードのテスト用
+  // const testMin = 21; // リロードのテスト用
+  // lastDateTime.setHours(lastDateTime.getHours() - testHour);  // リロードのテスト用
+  // lastDateTime.setMinutes(lastDateTime.getMinutes() - testMin);   // リロードのテスト用
+
+  // 現在時刻を表示する
+  function showClock() {
+    const days = ["日", "月", "火", "水", "木", "金", "土"];
+    const nowTime = new Date();
+    const nowYear = nowTime.getFullYear();
+    const nowMonth = nowTime.getMonth() + 1; 
+    const nowDate = nowTime.getDate(); 
+    const nowDay = nowTime.getDay();
+    const nowHour = nowTime.getHours();
+    const nowMin  = nowTime.getMinutes();
+    const nowSec  = nowTime.getSeconds();
+    const date = `${nowYear}年 ${nowMonth}月 ${nowDate}日 (${days[nowDay]})`
+    const time = `${('00' + nowHour).slice(-2)}:${('00' + nowMin).slice(-2)}:${('00' + nowSec).slice(-2)}`
+    const msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+    document.getElementById("today").innerHTML = date;
+    document.getElementById("realtime").innerHTML = time;  
+  }
+
+  // 日付が変わった時、強制的にページを更新する
+  function checkNewDay(){
+    const currentDateTime = new Date();
+    // currentDateTime.setHours(currentDateTime.getHours() - testHour);  // リロードのテスト用
+    // currentDateTime.setMinutes(currentDateTime.getMinutes() - testMin);   // リロードのテスト用
+    if (currentDateTime.getDay() !== lastDateTime.getDay()) {   // 曜日の変化でチェック
+      location.reload();
+    } 
+
+    lastDateTime = currentDateTime;
+  }
+
+  // ページ読み込み直後に現在時刻を表示
+  showClock();
+
+  // その後、1秒毎にスクリプト実行
+  setInterval(()=>{
+    showClock();
+    checkNewDay();
+  }, 1000);
+</script>
 @endsection
 
