@@ -1,16 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\ContactController;
-// use App\Http\Controllers\AdminController;
-
 use App\Http\Controllers\AttendancesController;
-
-// use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterdUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AttendancesController::class, 'index']);
     Route::post('/store', [AttendancesController::class, 'store']);
     Route::get('/attendance', [AttendancesController::class, 'attendance']);
-});
+    Route::get('/personal', [AttendancesController::class, 'personal']);
 
+    Route::post('/reset_all', [AttendancesController::class, 'resetAll']);
+    Route::post('/reset_end', [AttendancesController::class, 'resetEnd']);
+});

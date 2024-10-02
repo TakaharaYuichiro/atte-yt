@@ -1,3 +1,8 @@
+.form-content {
+  margin: 0 auto;
+  padding: 15px 15px 60px 15px;
+  max-width: 1230px;
+}
 
 /* =================================== */
 /* ステータス表示領域（上部） */
@@ -5,7 +10,7 @@
 .current-status__container{
   display: grid;
   grid-template-rows: 100px;
-  grid-template-columns: 200px 1fr 100px;
+  grid-template-columns: 200px 1fr;
 }
 
 .current-status{
@@ -18,7 +23,7 @@
   width: 100%;
 }
 .current-status__time--today{
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0 0 0 auto;
 }
 .current-status__time--realtime{
@@ -27,49 +32,26 @@
   align-items: center;    
 }
 #realtime{
-  font-size: 36px;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 .current-status__profile{
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  margin-left: 20px;
+  text-align: left;
   align-items: center;   
 }
 .current-status__profile span{
-  font-size: 18px;   
+  font-size: 1.1rem;   
 }
 #user-name{
-  font-size: 28px;   
-}
-
-
-/* =================================== */
-/* ステータス表示領域（下部） */
-/* =================================== */
-.record-status{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.record-status th{
-  width: 200px;
-  font-weight: bold;
-  padding:15px;
-}
-.record-status td{
-  width: 200px;
-  text-align: center;
-}
-.record-status tr{
-  border-bottom:1px solid #ccc;
-  
+  font-size: 1.5rem;   
 }
 
 /* =================================== */
 /* 打刻用の4つのボタン */
 /* =================================== */
-
 .atte-selecter{
   display: grid;
   grid-template-rows: 150px 90px;
@@ -92,7 +74,7 @@
   background: #fff;
   color:#666;
   border: none;
-  font-size:32px;
+  font-size:2rem;
 }
 .atte-selecter__button button:hover{
   background: #f6d0aa;
@@ -102,112 +84,77 @@
   color:#ccc;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.contact-form__content {
-  margin: 0 auto;
-  padding: 15px 15px 60px 15px;
-  max-width: 1230px;
-}
-
-.contact-form__heading {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.form {
-  margin: 0 auto;
-  width: 90%;
-}
-.contact-table{
-  width: 100%;
-  table-layout: fixed;
-}
-.contact-table th{
-  text-align: left;
-  padding: 10px 5px;
-  font-weight: normal;
-  width: 200px;
-}
-
-.form__label--required {
-  margin-left: 5px;
-  color: #FF9494;
-}
-
-.form__error {
-  height: 20px;
-  color: #ff0000;
-  text-align: left;
-  font-size: small;
-  padding-left: 20px;
-}
-
-.form__input--text{
+/* =================================== */
+/* ステータス表示領域（下部） */
+/* =================================== */
+.record-status{
   display: flex;
-  justify-content: space-between;
-}
-
-.form__input--text input, .form__input--text textarea {
-  flex-grow: 1;
-  width: 0;
-  margin:0 5px;
-  padding: 10px;
-  border: none;
-  appearance: none;
-  height: 40px;
-  background: #F4F4F4;
-  color:#8B7969;
-}
-
-.form__input--text textarea {
-  height: 180px;
-}
-
-.form__input--text select {
-  margin:0 5px;
-  padding: 10px;
-  border: none;
-  appearance: none;
-  height: 40px;
-  background: #F4F4F4;
-  color:#8B7969;
-}
-
-.form__input--radio input{
-  margin:0 5px;
-  padding: 10px;
-  accent-color:#8B7969;
-}
-
-.form__button {
-  display:flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100px;
+  margin-bottom: 40px;
+}
+.record-status th{
+  width: 200px;
+  font-weight: bold;
+  padding:15px;
+}
+.record-status td{
+  width: 200px;
+  text-align: center;
+}
+.record-status tr{
+  border-bottom:1px solid #ccc; 
 }
 
-.form__button-submit {
-  width: 120px;
-  height: 50px;
-  border: none;
-  background: #82756A;
-  color: #fff;
-  cursor: pointer;
+/* =================================== */
+/* データ削除ボタン */
+/* =================================== */
+.optional-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.form__button-submit:hover{
-  background: #c7c0ba;
+.optional-section form{
+  margin: 0 10px;
+}
+.optional-section button{
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+}
+.optional-section button span:hover{
+  color:blue;
+}
+
+
+/* =================================== */
+/* レスポンシブデザイン対応 */
+/* =================================== */
+@media screen and (max-width: 480px){
+  .current-status__container{
+    display: grid;
+    grid-template-rows: 100px 50px;
+    grid-template-columns: 200px 1fr;
+  }
+
+  .current-status__div1 {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .current-status__div2 {
+    grid-row: 2;
+    grid-column: 1 / 3;
+    justify-content:flex-start; 
+  }
+  .current-status__profile{
+    margin: 0 ;
+  }
+
+  #user-name{
+    font-size: 1.2rem;   
+  }
+
+  .atte-selecter__button button{
+    font-size:1.5rem;
+  }
 }

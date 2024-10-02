@@ -7,74 +7,33 @@
 /* ====================================================================== */
 /* date-section (表示する日付を選択する)*/
 /* ====================================================================== */
-.date-section{
+.user-section{
   margin: 20px auto;
-  display: grid;
-  grid-template-columns: 1fr 200px 1fr;
-  align-items: center;
-}
-.date-section__center{
-  grid-column: 2;
-  width: 100%;
-
   display: flex;
-  justify-content:space-between;
-  align-items: center;
+  justify-content: center;
+  align-items:baseline;
+}
+.user-section__message{
+  /* display: flex;
+  justify-content:center; */
+  align-items: baseline;
+}
+.user-section__name{
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
-.date-section__select-date{
-  grid-column: 3;
+.user-section__select{
   width: 80px;
-  margin: 0 auto 0 40px;
+  margin: 0 20px 0 40px;
 }
-.date-section__select-date a{
+.user-section__select a{
   /* text-decoration: none; */
   font-size: 0.8rem;
   color:#8B7969;
 }
-.date-section__select-date a:hover{
+.user-section__select a:hover{
   color:#333;
-}
-
-.date-section__button {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  border: none;
-  background-color: transparent;
-}
-.date-section__button:hover{
-  background-color: #c7c0ba;;
-}
-.prev-button:after{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 7px;
-  margin: auto;
-  content: "";
-  vertical-align: middle;
-  width: 0.8em;   /* arrow size */
-  height: 0.8em;  /* arrow size */
-  border-top: 2px solid #808080;  /* thickness, color */
-  border-right: 2px solid #808080;
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
-.next-button:after{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 7px;
-  margin: auto;
-  content: "";
-  vertical-align: middle;
-  width: 0.8em;   /* arrow size */
-  height: 0.8em;  /* arrow size */
-  border-top: 2px solid #808080;  /* thickness, color */
-  border-right: 2px solid #808080;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
 }
 
 
@@ -266,19 +225,3 @@ ul.pagination li a:hover:not(.active) {
   background: #c7c0ba;
 }
 
-
-/* =================================== */
-/* レスポンシブデザイン対応 */
-/* =================================== */
-/* @media screen and (max-width: 480px){
-  .header-logo {  
-    height: 65%;
-  }
-  .header-utilities{
-    height: 35%;
-    left:0;
-    top:65%;
-    padding: 0 10%;
-    width: 100%;
-  }
-} */

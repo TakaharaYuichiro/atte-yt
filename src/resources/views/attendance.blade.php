@@ -9,20 +9,16 @@
 @endsection
 
 @section('content')
-<div class="contact-form__content">
-  <div class="contact-form__heading">
-    <h2></h2>
-  </div>
-
+<div class="main-content">
   <div class="date-section">
     <div class="date-section__center">
       <form action="/attendance" method="get">
         @csrf
         <?php 
-          $prevDate =  date('Y-m-d', strtotime('-1 day', strtotime($condition['targetDate']) ));
+          $prevDate = date('Y-m-d', strtotime('-1 day', strtotime($condition['targetDate']) ));
         ?>
         <input type="hidden" name="targetDate" value="{{ $prevDate }}" />
-        <button class="date-section__submit-button" type="submit"><</button>
+        <button class="date-section__button prev-button" type="submit"></button>
       </form>
 
       <div>{{ $condition['targetDate']}}</div>
@@ -30,10 +26,10 @@
       <form action="/attendance" method="get">
         @csrf
         <?php 
-          $nextDate =  date('Y-m-d', strtotime('1 day', strtotime($condition['targetDate']) ));
+          $nextDate = date('Y-m-d', strtotime('1 day', strtotime($condition['targetDate']) ));
         ?>
         <input type="hidden" name="targetDate" value="{{ $nextDate }}" />
-        <button class="date-section__submit-button" type="submit">></button>
+        <button class="date-section__button next-button" type="submit"></button>
       </form>
     </div>
 
@@ -66,9 +62,6 @@
 
   <div class="optional-section">
     <div class="optional-section__pagination">
-        <!-- 以下のウェブ記事を参考 -->
-        <!-- https://qiita.com/panax/items/fca6e39d6731899e0c7a -->
-        <!-- https://qiita.com/wbraver/items/b95814d6383172b07a58 -->
         {{ $data->appends(request()->query())->links('vendor.pagination.original_pagination_view') }}
     </div>
   </div>
@@ -82,7 +75,6 @@
         <a href="#" class="modal__close-btn"></a>
     </div>
     <div class="modal__content">
-
       <form class="modal__detail-form" action="/attendance" method="get">
         @csrf
         <p class="modal-form__message">日付を選択してください</p>
@@ -94,7 +86,6 @@
         </div>
       </form>
     </div>
-    
   </div>
 </div>
 

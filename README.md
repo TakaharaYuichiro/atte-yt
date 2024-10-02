@@ -1,23 +1,29 @@
-# お勤怠管理システム
+# 勤怠管理システム
 
-プロジェクト名：atte-yt
+勤怠データを記録するシステムです。
+![MAIN SCREEN](readme_fig/screenshot_index.png)
 
-## 環境構築
+## 作成した目的
 
-Dockerビルド
+勤怠データの記録はとても面倒です。ストレスなく簡単にデータを記録できるシステムあると便利です。
 
-1. git clone <git@github.com>:TakaharaYuichiro/contact-form-ability-test.git
-2. docker-compose up -d --build
-※ MySQLは、OSによって起動しない場合があるのでそれぞれのPCに合わせてdocker-compose.ymlファイルを編集してください。
+## アプリケーションURL
 
-Laravel環境構築
+- 開発環境：<http://localhost/>
+- phpMyAdmin：<http://localhost:8080>
 
-1. docker-compose exec php bash
-2. composer install
-3. .env.exampleファイルから.envを作成し、環境変数を変更
-4. php artisan key:generate
-5. php artisan migrate
-6. php artisan db:seed
+## 他のリポジトリ
+
+なし
+
+## 機能一覧
+
+- 会員登録
+- ログイン/ログアウト
+- 勤務開始/勤務終了登録
+- 休憩開始/休憩終了登録
+- 日付別勤怠情報表示(ページネーション: 5件ずつ)
+- 会員別勤怠情報表示(ページネーション: 7件ずつ)
 
 ## 使用技術(実行環境)
 
@@ -25,18 +31,66 @@ Laravel環境構築
 - Laravel 8.83.8
 - MySQL 8.0.26
 
+## テーブル設計
+
+![TABLE SPECIFICATION](readme_fig/table_specifications.png)
+
 ## ER図
 
-![ER DIAGRAM](2024-09-17-19-33-49.png)
+![ER DIAGRAM](readme_fig/er_diagrams.png)
 
-## URL
+## 環境構築
 
-- 開発環境：<http://localhost/>
-- phpMyAdmin：<http://localhost:8080>
+Dockerビルド
 
-## 補足(出題内容から変更した点)
+1. `git clone <git@github.com>:TakaharaYuichiro/atte-yt.git`
+2. DockerDesktopアプリを立ち上げる
+3. `docker-compose up -d --build`
 
-- ルールの項に「教材内の言語で開発」とあるため、javascriptの使用は不可と捉えました。しかしながら、管理画面における「詳細の表示はモーダルウィンドウを使用」に対して、教材内の言語でうまく実現できなかったため、javascriptを使用しました。
-- contactsテーブルの仕様書においては、電話番号に関するカラムは「tell」ひとつとなっています。一方、お問い合わせフォームの入力画面の画面イメージにおいては、電話番号の入力に3つの入力ボックスが使用されています。このため、一つのカラムに統合せず、「tel」「tel_middle」「tel_bottom」の3つのカラムに分割しました。
-- 登録ページの画面イメージにおいては、パスワードの確認欄がありませんが、教材内のサンプルに倣って、パスワードの確認欄を追加しました。
-  
+> *MacのM1・M2チップのPCの場合、`no matching manifest for linux/arm64/v8 in the manifest list entries`のメッセージが表示されビルドができないことがあります。
+エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください*
+
+``` bash
+mysql:
+    platform: linux/x86_64(この文追加)
+    image: mysql:8.0.26
+    environment:
+```
+
+Laravel環境構築
+
+1. `docker-compose exec php bash`
+2. `composer install`
+3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
+4. .envに以下の環境変数を追加
+
+``` text
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+```
+
+5. アプリケーションキーの作成
+
+``` bash
+php artisan key:generate
+```
+
+6. マイグレーションの実行
+
+``` bash
+php artisan migrate
+```
+
+7. シーディングの実行
+
+``` bash
+php artisan db:seed
+```
+
+## 備考
+
+

@@ -9,48 +9,22 @@
 @endsection
 
 @section('content')
-<div class="contact-form__content">
-  <div class="contact-form__heading">
-    <h2></h2>
-  </div>
-
+<div class="form-content">
   <!-- ステータス表示領域（上部） -->
   <div class="current-status__container">
-    <div class="current-status">
+    <div class="current-status current-status__div1">
       <div class="current-status__time">
         <div class="current-status__time--today"><span id="today"></span></div>
         <div class="current-status__time--realtime"><span id="realtime"></span></div>
       </div>
     </div>
-    <div class="current-status">
+    <div class="current-status current-status__div2">
       <div class="current-status__profile">
         <span id="user-name">{{$profile['name']}}</span>
         <span>{{'さん お疲れ様です！'}}</span>
       </div>
     </div>
-    <div class="current-status">
-      <div class="current-status">
-        <span>
-          @switch($data['workState'])
-            @case(1)
-              @if($data['isRest'])
-                休憩中
-              @else
-                勤務中
-              @endif
-              @break;
-            @case(2)
-              勤務終了
-              @break;
-            @default
-              勤務開始前
-              @break
-          @endswitch
-        </span>
-      </div>
-    </div>
   </div>
-
 
   <!-- 打刻用の4つのボタンの領域 -->
   <div class="atte-selecter">
@@ -96,14 +70,54 @@
   <div class="record-status">
     <table>
       <tr>
-        <th>本日の出社時刻</th>
+        <th>現在のステータス</th>
+        <td>
+          <span>
+            @switch($data['workState'])
+              @case(1)
+                @if($data['isRest'])
+                  休憩中
+                @else
+                  勤務中
+                @endif
+                @break;
+              @case(2)
+                勤務終了
+                @break;
+              @default
+                勤務開始前
+                @break
+            @endswitch
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>本日の勤務開始時刻</th>
         <td>{{$data['startTime']}}</td>
       </tr>
       <tr>
-        <th>これまでの休憩時間</th>
+        <th>休憩時間 合計</th>
         <td>{{$data['restTimeTotal']}}</td>
       </tr>
     </table>
+  </div>
+
+  <div class="optional-section">
+    <form action="/reset_all" method="post" class="optional-section__form--reset">
+      @csrf
+      <input type="hidden" name="id" value="{{$profile->id}}">
+      <button type="submit" onclick='showDeleteAllMessage()'>
+          <span>本日の勤務データを全て削除</span> 
+      </button>
+    </form>
+
+    <form action="/reset_end" method="post" class="optional-section__form--reset">
+      @csrf
+      <input type="hidden" name="id" value="{{$profile->id}}">
+      <button type="submit" onclick='return confirm("勤務終了時刻のデータを削除してもよろしいですか？")'>
+          <span>勤務終了時刻のみ削除</span> 
+      </button>
+    </form>
   </div>
 </div>
 
@@ -153,6 +167,12 @@
     showClock();
     checkNewDay();
   }, 1000);
+
+
+  function showDeleteAllMessage(){
+    const userName = '<?php echo $profile['name']; ?>';
+    return confirm(`${userName}さんの本日の勤務データを全て削除してもよろしいですか？`);
+  }
 </script>
 @endsection
 

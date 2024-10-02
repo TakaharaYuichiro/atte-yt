@@ -20,16 +20,13 @@
           <h1>Atte</h1>
         </a>
       </div>
-
       @yield('utilities')
-        
     </div>
   </header>
 
   <main class="main">
     @yield('content')
   </main>
-
 
   <footer  class="footer">
   	<p>Atte, Inc.</p>

@@ -1,4 +1,4 @@
-.login-form__content {
+.main-content {
   margin: 0 auto;
   padding: 30px 15px;
   max-width: 1230px;
@@ -11,7 +11,7 @@
 
 .form {
   margin: 0 auto;
-  width: 470px;
+  max-width: 470px;
   text-align: center;
   padding: 30px;
 }
@@ -20,15 +20,11 @@
   margin-bottom: 5px;
 }
 
-.form__group-title {
-  text-align: left;
-}
-
 .form__error {
   height: 20px;
   color: #ff0000;
   text-align: left;
-  font-size: small;
+  font-size: 0.8rem;
 }
 
 .form__input--text input {
@@ -54,28 +50,7 @@
   background: #214BE0;
   color: #fff;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.register__link {
-  margin-top: 20px;
-  text-align: center;
-}
-
-
-/* =================================== */
-/* utilities */
-/* =================================== */
-
-.utility-button{
-  width: 100px;
-  height: 32px;
-  background: #F0F0F0;
-  color:#888;
-  border: solid 1px #D9C6B5;
-}
-.utility-button:hover{
-  background: #c7c0ba;
+  font-size: 0.9rem;
 }
 
 .login-register-switching{
