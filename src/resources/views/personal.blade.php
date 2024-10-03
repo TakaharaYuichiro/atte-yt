@@ -13,12 +13,14 @@
   <div class="user-section">
 
     <div class="user-section__message">
-      <span class="user-section__name" id="user-name">{{$condition['name']}}</span>
-      <span>{{'さんの勤務データ一覧'}}</span>
+      <div class="user-section__name">
+        <span id="user-name">{{$condition['name']}}</span>
+        <span>{{'さんの直近1ヶ月の勤務データ'}}</span>
+      </div>
     </div>
 
     <div class="user-section__select">
-      <a href="#selectUser">会員選択</a>
+      <a href="#selectUser">会員一覧</a>
     </div>
   </div>
 
@@ -63,27 +65,34 @@
   <a href="#!" class="modal-overlay"></a>
   <div class="modal__inner">
     <div class="modal__header">
+      <div class="modal__title">
+        <h2>会員一覧</h2>
+      </div>
+      <div class="modal__close-btn__parent">
         <a href="#" class="modal__close-btn"></a>
+      </div>
     </div>
-    <div class="modal__content">
-      <form class="modal__detail-form" action="/personal" method="get">
-        @csrf
-        <p class="modal-form__message">会員を選択してください</p>
-        <div class="modal-form__input">
-          <select class="search-form__item-select" name="user_id" >
-            <option value="" {{ old('user_id','') == '' ? 'selected' : '' }}>--選択してください--</option>
-            @foreach($users as $user)
-              <option value="{{$user['id']}}" {{ old('user_id') == $user['id'] ? 'selected' : '' }}>
-                {{$user['name']}}
-              </option>
-            @endforeach
-          </select>
-        </div>
-        <div  class="modal-form__submit-button">
-          <button type="submit">OK</button>
-        </div>
-      </form>
+
+
+    <div class="users-list-section">
+      <table class="users-list-section__table">
+        <tbody class="users-list-section__table--body"></div>
+          @foreach($users as $user)
+          <tr>
+            <td class="users-list-section__table--name"><span>{{ $user['name'] }}</span></td> 
+            <td class="users-list-section__table--button">
+              <form action="/personal" method="get">
+                @csrf
+                <input type="hidden" name='user_id' value="{{$user['id']}}">
+                <button>勤務記録</button>
+              </form>
+            </td> 
+          </tr>
+          @endforeach
+        </tbody>    
+      </table>
     </div>
+
   </div>
 </div>
 

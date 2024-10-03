@@ -8,28 +8,44 @@
 /* date-section (表示する日付を選択する)*/
 /* ====================================================================== */
 .user-section{
+  position: relative;
   margin: 20px auto;
-  display: flex;
-  justify-content: center;
-  align-items:baseline;
+  width: 100%;
+  height: 60px;
 }
 .user-section__message{
-  /* display: flex;
-  justify-content:center; */
-  align-items: baseline;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
 }
-.user-section__name{
+.user-section__name span{
+  display: inline-block;
+  white-space: nowrap;
+}
+.user-section__name #user-name{
   font-size: 1.5rem;
   margin-right: 5px;
 }
 
 .user-section__select{
+  position: absolute;
   width: 80px;
-  margin: 0 20px 0 40px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin: 0 20px;
+
 }
 .user-section__select a{
   /* text-decoration: none; */
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
   color:#8B7969;
 }
 .user-section__select a:hover{
@@ -115,7 +131,7 @@ ul.pagination li a:hover:not(.active) {
 }
 
 /* ====================================================================== */
-/* 日付選択用モーダルウインドウ */
+/* ユーザー選択用モーダルウインドウ */
 /* ====================================================================== */
 .modal {
   position: fixed;
@@ -125,6 +141,8 @@ ul.pagination li a:hover:not(.active) {
   width: 100%;
   height: 100%;
   opacity: 0;
+
+  
 }
 
 .modal:target {
@@ -146,19 +164,45 @@ ul.pagination li a:hover:not(.active) {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 350px;
+  width: 400px;
   border: 1px solid #8B7969;
-  background-color: #fff;
+  background-color: #f2f2f2;
   box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
   transform: translate(-50%, -50%);
+
 }
 
 .modal__header {
-  padding: 8px 15px;
-  display: flex;
-  justify-content: flex-end;
+  position: relative;
+  height: 55px;
+  margin-bottom:5px;
+  background: white;
 }
-
+.modal__title{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__title h2{
+  line-height: 0;
+}
+.modal__close-btn__parent{
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .modal__close-btn{
   display: block;
   width: 40px;
@@ -182,46 +226,54 @@ ul.pagination li a:hover:not(.active) {
 }
   
 .modal__close-btn:hover{
-  background: #ccc;
+  background: #c7c0ba;
   color: #FFF;
   cursor: pointer;
 }
 
-.modal__content {
-  padding: 20px 5px;
-  height: 240px;
-  position: relative;
-}
-
-.modal-form__message{
-  margin: 0 auto 5px 10px;
-}
-.modal-form__input{
-  margin: 5px auto 35px auto;
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-}
-.modal-form__input input{
-  width: 200px;
-}
-
-.modal-form__submit-button {
-  position: absolute;
-  bottom: 15px;
+.users-list-section{
+  background: #f2f2f2;
+  padding: 0px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items:center;
 }
-.modal-form__submit-button button{
-  width: 80px;
-  height: 40px;
-  background: #82756A;
-  color: #FFF;
-  border:none;
+.users-list-section__table{
+  width: 100%;
+  table-layout: fixed;
 }
-.modal-form__submit-button button:hover{
+.users-list-section__table--body {
+  display:block;
+  overflow-y: scroll;
+  height: 400px;
+  width: 100%;
+  resize:vertical;
+}
+.users-list-section__table tr{
+  width: 100%; 
+  padding: 10px;
+}
+.users-list-section__table tr:nth-child(2n+1) {
+
+  background: #E8FaFa;
+}
+.users-list-section__table--name{
+  width: 250px;
+  padding: 10px;
+
+  text-align: center;
+  font-size: 1.2rem;
+}
+.users-list-section__table--button{
+  width: 150px;
+  text-align: center;
+}
+.users-list-section__table--button button{
+  background: transparent;
+  border: 1px #bbb solid;
+  color: #666;
+}
+.users-list-section__table--button button:hover{
   background: #c7c0ba;
 }
+
+
 
